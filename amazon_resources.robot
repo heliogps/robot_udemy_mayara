@@ -44,3 +44,29 @@ Clicar no botão de pesquisa
 
 Verificar o resultado da pesquisa se está listando o produto "${NOME_PRODUTO}"
     Wait Until Element Is Visible    locator=//img[contains(@alt,'${NOME_PRODUTO}')]
+
+Dado que estou na home page da Amazon.com.br
+    Acessar a home page do site Amazon.com.br
+    Verificar se o título da página fica "Amazon.com.br | Tudo pra você, de A a Z."
+
+Quando acessar o menu "Mais Vendidos"
+    Entrar no menu "Mais Vendidos"
+
+E o texto "Mais vendidos" deve ser exibido na página
+    Verificar se aparece a frase "Mais vendidos"
+
+Então o título da página deve ficar "Amazon.com.br Mais Vendidos: Os itens mais populares na Amazon"
+    Verificar se o título da página fica "Amazon.com.br Mais Vendidos: Os itens mais populares na Amazon"
+
+E a categoria "Eletrônicos" deve ser exibida na página
+    Verificar se aparece a categoria "Eletrônicos"
+
+Quando pesquisar pelo produto "Playstation 5"
+    Digitar o nome de produto "Playstation 5" no campo de pesquisa
+    Clicar no botão de pesquisa
+
+Então o título da página deve ficar "Amazon.com.br : Playstation 5"
+    Verificar se o título da página fica "Amazon.com.br : Playstation 5"
+
+E um produto da linha "Playstation 5" deve ser mostrado na página
+    Verificar o resultado da pesquisa se está listando o produto "Playstation 5"

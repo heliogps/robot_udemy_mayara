@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation    Esta suite testa o site da Amazon.com.br
-Resource         amazon_resources_gherkin_bdd.robot
+Resource         amazon_resources.robot
 Test Setup       Abrir O Navegador
 Test Teardown    Fechar O Navegador
 
