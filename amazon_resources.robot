@@ -70,3 +70,10 @@ Então o título da página deve ficar "Amazon.com.br : Playstation 5"
 
 E um produto da linha "Playstation 5" deve ser mostrado na página
     Verificar o resultado da pesquisa se está listando o produto "Playstation 5"
+
+Adicionar o produto "${NOME_PRODUTO}" no carrinho
+    Wait Until Element Is Visible    locator=(//span[contains(.,'${NOME_PRODUTO}')])
+    Click Element    locator=(//span[contains(.,'${NOME_PRODUTO}')])
+    Wait Until Element Is Visible    locator=landingImage
+    
+    
