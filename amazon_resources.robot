@@ -73,7 +73,47 @@ E um produto da linha "Playstation 5" deve ser mostrado na página
 
 Adicionar o produto "${NOME_PRODUTO}" no carrinho
     Wait Until Element Is Visible    locator=(//span[contains(.,'${NOME_PRODUTO}')])
-    Click Element    locator=(//span[contains(.,'${NOME_PRODUTO}')])
+    Click Link    locator=(//a[contains(.,'${NOME_PRODUTO}')])
     Wait Until Element Is Visible    locator=landingImage
-    
+    Click Button    locator=add-to-cart-button
+
+Verificar se o produto "${NOME_PRODUTO}" foi adicionado com sucesso
+    Wait Until Element Is Visible    locator=//span[contains(.,'Adicionado ao carrinho')]
+    Wait Until Element Is Visible    locator=//a[contains(@data-csa-c-type,'button')]
+    Click Link    locator=//a[contains(@data-csa-c-type,'button')]
+    Wait Until Element Is Visible    locator=//h1[contains(.,'Carrinho de compras')]
+    Wait Until Element Is Visible    locator=(//input[contains(@value,'Excluir')])
+    Wait Until Element Is Visible    locator=sc-subtotal-label-buybox
+    Wait Until Element Is Visible    locator=sc-subtotal-label-activecart
+
+Remover o produto "${NOME_PRODUTO}" do carrinho
+    Wait Until Element Is Visible    locator=(//input[contains(@value,'Excluir')])
+    Click Button    locator=(//input[contains(@value,'Excluir')])
+    Wait Until Element Is Visible    locator=//span[contains(.,'foi removido de Carrinho de compras.')]
+
+Verificar se o carrinho fica vazio
+    Wait Until Element Is Visible    locator=//span[contains(.,'0 itens')]
+    Wait Until Element Is Visible    locator=//h1[contains(.,'Seu carrinho de compras da Amazon está vazio.')]
+
+Quando adicionar o produto "${NOME_PRODUTO}" no carrinho
+    Digitar o nome de produto "${NOME_PRODUTO}" no campo de pesquisa
+    Clicar no botão de pesquisa
+    Wait Until Element Is Visible    locator=//img[contains(@alt,'${NOME_PRODUTO}')]
+    Adicionar o produto "${NOME_PRODUTO}" no carrinho
+
+Então o produto "${NOME_PRODUTO}" deve ser mostrado no carrinho
+    Verificar se o produto "${NOME_PRODUTO}" foi adicionado com sucesso
+
+E existe o produto "${NOME_PRODUTO}" no carrinho
+    Quando adicionar o produto "${NOME_PRODUTO}" no carrinho
+    Verificar se o produto "${NOME_PRODUTO}" foi adicionado com sucesso
+    Wait Until Element Is Visible    locator=nav-cart
+    Click Link    locator=nav-cart
+    Wait Until Element Is Visible    locator=(//span[contains(.,'1 item')])
+
+Quando remover o produto "${NOME_PRODUTO}" do carrinho
+    Remover o produto "${NOME_PRODUTO}" do carrinho
+
+Então o carrinho deve ficar vazio
+    Verificar se o carrinho fica vazio
     
